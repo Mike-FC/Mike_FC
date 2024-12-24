@@ -1,0 +1,99 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #a18cd1, #fbc2eb);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #menuprincipal {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    height: 50px;
+    padding: 0% 2%;
+    background-color: #a18cd1;
+    border-top: 1px solid #fbc2eb;
+    border-bottom: 1px solid #fc0060;
+  }
+
+  #menuprincipal > div {
+    flex: 1;
+    max-width: 960px;
+  }
+  #menuprincipal li {
+    display: inline-block;
+    height: 35px;
+    padding: 15px 10px 0px 10px;
+    margin-right: 5px;
+  }
+
+  #menuprincipal li:hover {
+    background-color: #b306ca;
+  }
+  #menuprincipal a {
+    font: bold 18px Arial, sans-serif;
+    color: #333333;
+    text-decoration: none;
+  }
+  
+  .container {
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .cloud {
+    font-size: 5em;
+    cursor: pointer;
+    animation: float 3s infinite ease-in-out;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Corazones flotando */
+  .heart {
+    position: absolute;
+    font-size: 1.5em;
+    color: red;
+    animation: floatUp 4s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+  
+  /* Animaciones */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes floatUp {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-300px);
+      opacity: 0;
+    }
+  }

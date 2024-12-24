@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rosa</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #2c0033, #1a0033);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+        }
+
+        #menuprincipal {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    height: 50px;
+    padding: 0% 2%;
+    background-color: #ff66b3;
+    border-top: 1px solid #ff3366;
+    border-bottom: 1px solid #970d4e;
+  }
+
+  #menuprincipal > div {
+    flex: 1;
+    max-width: 960px;
+  }
+  #menuprincipal li {
+    display: inline-block;
+    height: 35px;
+    padding: 15px 10px 0px 10px;
+    margin-right: 5px;
+  }
+
+  #menuprincipal li:hover {
+    background-color: #6facc6;
+  }
+  #menuprincipal a {
+    font: bold 18px Arial, sans-serif;
+    color: #333333;
+    text-decoration: none;
+  }
+
+        .rose-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            animation: floatRose 6s ease-in-out infinite;
+        }
+
+        .petal {
+            position: absolute;
+            background: linear-gradient(45deg, #ff3366, #ff66b3);
+            border-radius: 50% 50% 50% 0;
+            transform-origin: bottom center;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.3);
+            animation: glowPetal 3s infinite alternate;
+        }
+
+        .stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            height: 200px;
+            background: linear-gradient(to right, #00cc66, #00ff80);
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(0, 204, 102, 0.3);
+        }
+
+        .leaf {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: linear-gradient(45deg, #00cc66, #00ff80);
+            border-radius: 50% 50% 50% 0;
+            box-shadow: 0 0 10px rgba(0, 204, 102, 0.3);
+            animation: glowLeaf 3s infinite alternate;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        .poem {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: fadeIn 3s ease-out;
+        }
+
+        .poem h2 {
+            color: #ff66b3;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 102, 179, 0.5);
+        }
+
+        .poem p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        @keyframes floatRose {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        @keyframes glowPetal {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.3); }
+        }
+
+        @keyframes glowLeaf {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <nav id="menuprincipal">
+        <div>
+          <ul>
+            <li><a href="index1.html">Principal</a></li>
+            <li><a href="Love.html">Sorpresa 1</a></li>
+            <li><a href="Nubes.html">Sorpresa 2</a></li>
+            <li><a href="paisaje.html">Sorpresa 3</a></li>
+            <li><a href="Arbolito.html">Feliz Navidad y Año nuevo</a></li>
+            <li><a href="Rose 3d.html">xd</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="rose-container">
+        <div class="stem"></div>
+    </div>
+    <div class="poem">
+        <h2>✨ Rosa Encantada ✨</h2>
+        <p>Como un sueño de petalos rosados,<br>
+           Danzan en el viento con dulzura,<br>
+           Cada uno un deseo guardado,<br>
+           Brillando con magica hermosura.</p>
+        
+        <p>Eres poesía hecha flor,<br>
+           Un regalo del jardín del cielo,<br>
+           Perfume de eterno amor,<br>
+           Que hace realidad cada anhelo.</p>
+        
+        <p>En tus petalos de seda y luz,<br>
+           Encuentro la magia del querer,<br>
+           Eres la estrella que me conduce,<br>
+           Al infinito jardín del amanecer.</p>
+    </div>
+
+    <script>
+        const roseContainer = document.querySelector('.rose-container');
+        
+        function createPetals() {
+            const numLayers = 8;
+            const petalsPerLayer = 12;
+            
+            for (let layer = 0; layer < numLayers; layer++) {
+                for (let i = 0; i < petalsPerLayer; i++) {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    
+                    const angle = (i / petalsPerLayer) * Math.PI * 2;
+                    const size = 20 + layer * 10;
+                    const distance = layer * 15;
+                    
+                    petal.style.width = `${size}px`;
+                    petal.style.height = `${size * 1.5}px`;
+                    petal.style.left = `${150 + Math.cos(angle) * distance}px`;
+                    petal.style.top = `${150 + Math.sin(angle) * distance}px`;
+                    petal.style.transform = `rotate(${angle * 180 / Math.PI + 90}deg)`;
+                    petal.style.animationDelay = `${Math.random() * 2}s`;
+                    
+                    roseContainer.appendChild(petal);
+                }
+            }
+        }
+
+        function createLeaves() {
+            const numLeaves = 4;
+            for (let i = 0; i < numLeaves; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'leaf';
+                
+                const height = 50 + (i * 40);
+                const side = i % 2 === 0 ? -1 : 1;
+                
+                leaf.style.bottom = `${height}px`;
+                leaf.style.left = '50%';
+                leaf.style.transform = `
+                    translateX(${side * 30}px)
+                    rotate(${side === 1 ? 45 : -45}deg)
+                `;
+                leaf.style.animationDelay = `${i * 0.5}s`;
+                
+                roseContainer.appendChild(leaf);
+            }
+        }
+
+        function createSparkles() {
+            const numSparkles = 30;
+            for (let i = 0; i < numSparkles; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                
+                const size = 2 + Math.random() * 3;
+                sparkle.style.width = `${size}px`;
+                sparkle.style.height = `${size}px`;
+                
+                sparkle.style.left = `${Math.random() * 300}px`;
+                sparkle.style.top = `${Math.random() * 300}px`;
+                sparkle.style.animationDelay = `${Math.random() * 2}s`;
+                
+                roseContainer.appendChild(sparkle);
+            }
+        }
+
+        // Iniciar
+        createPetals();
+        createLeaves();
+        createSparkles();
+    </script>
+</body>
+</html>

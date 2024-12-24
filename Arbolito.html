@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbolito</title>
+    <style>
+        body {
+            background: linear-gradient(#0f2027, #203a43, #2c5364);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #menuprincipal {
+    display: flex;
+    justify-content: center;
+    width: 96%;
+    height: 50px;
+    padding: 0% 2%;
+    background-color: #0f2027;
+    border-top: 1px solid #203a43;
+    border-bottom: 1px solid #2c5364;
+  }
+
+  #menuprincipal > div {
+    flex: 1;
+    max-width: 960px;
+  }
+  #menuprincipal li {
+    display: inline-block;
+    height: 35px;
+    padding: 15px 10px 0px 10px;
+    margin-right: 5px;
+  }
+
+  #menuprincipal li:hover {
+    background-color: #6facc6;
+  }
+  #menuprincipal a {
+    font: bold 18px Arial, sans-serif;
+    color: #333333;
+    text-decoration: none;
+  }
+
+        .tree {
+            position: relative;
+            height: 400px;
+            padding: 20px;
+        }
+
+        .star {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: yellow;
+            font-size: 40px;
+            animation: twinkle 1s infinite;
+            z-index: 10;
+        }
+
+        .tree-layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: solid transparent;
+            border-right: solid transparent;
+            border-bottom: solid;
+        }
+
+        /* Capas del árbol */
+        .layer1 {
+            border-left-width: 25px;
+            border-right-width: 25px;
+            border-bottom-width: 100px;
+            border-bottom-color: #1a472a;
+            top: 0;
+        }
+
+        .layer2 {
+            border-left-width: 50px;
+            border-right-width: 50px;
+            border-bottom-width: 120px;
+            border-bottom-color: #2d5a3f;
+            top: 60px;
+        }
+
+        .layer3 {
+            border-left-width: 80px;
+            border-right-width: 80px;
+            border-bottom-width: 140px;
+            border-bottom-color: #0f5132;
+            top: 140px;
+        }
+
+        .layer4 {
+            border-left-width: 100px;
+            border-right-width: 100px;
+            border-bottom-width: 160px;
+            border-bottom-color: #1a472a;
+            top: 220px;
+        }
+
+        .trunk {
+            position: absolute;
+            width: 40px;
+            height: 80px;
+            background: linear-gradient(90deg, #5c3824 0%, #8b4513 50%, #5c3824 100%);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+            box-shadow: -2px 0 4px rgba(0,0,0,0.3);
+        }
+
+        .ornament {
+            position: absolute;
+            border-radius: 50%;
+            animation: glow 1.5s infinite alternate;
+            box-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+
+        .message {
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .snow {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .branch {
+            position: absolute;
+            background: #0f5132;
+            height: 3px;
+            transform-origin: left center;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+            100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+        }
+
+        @keyframes glow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.5); box-shadow: 0 0 10px rgba(255,255,255,0.8); }
+        }
+
+        .light {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: glow 1s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <nav id="menuprincipal">
+        <div>
+          <ul>
+            <li><a href="index1.html">Principal</a></li>
+          <li><a href="Love.html">Sorpresa 1</a></li>
+          <li><a href="Nubes.html">Sorpresa 2</a></li>
+          <li><a href="paisaje.html">Sorpresa 3</a></li>
+          <li><a href="Arbolito.html">Feliz Navidad y Año nuevo</a></li>
+          <li><a href="Rose 3d.html">xd</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div class="tree">
+        <div class="star">⭐</div>
+        <div class="tree-layer layer1"></div>
+        <div class="tree-layer layer2"></div>
+        <div class="tree-layer layer3"></div>
+        <div class="tree-layer layer4"></div>
+        <div class="trunk"></div>
+    </div>
+    <div class="message">
+        <h1>¡Feliz Navidad y Prospero Año Nuevo 2025! 🎄✨</h1>
+        <p>Que tus días se llenen de alegría y bendiciones</p>
+    </div>
+
+    <script>
+        const tree = document.querySelector('.tree');
+        const colors = ['#ff0000', '#ffff00', '#ff69b4', '#4169e1', '#ffa500'];
+        const lightColors = ['#fff5e6', '#ffffcc', '#ffcccc'];
+
+        // Agregar ramas pequeñas para más realismo
+        function addBranches() {
+            const layers = document.querySelectorAll('.tree-layer');
+            layers.forEach((layer, layerIndex) => {
+                const layerHeight = layer.offsetHeight;
+                const layerWidth = layerIndex * 50 + 50;
+                const branchCount = 8 + layerIndex * 2;
+
+                for (let i = 0; i < branchCount; i++) {
+                    const branch = document.createElement('div');
+                    branch.className = 'branch';
+                    branch.style.width = `${20 + Math.random() * 30}px`;
+                    branch.style.left = `${50 - layerWidth/2 + Math.random() * layerWidth}px`;
+                    branch.style.top = `${layerIndex * 80 + i * (layerHeight/branchCount)}px`;
+                    branch.style.transform = `rotate(${Math.random() * 60 - 30}deg)`;
+                    tree.appendChild(branch);
+                }
+            });
+        }
+
+        // Agregar adornos
+        function addOrnaments() {
+            const positions = [];
+            for (let i = 0; i < 30; i++) {
+                const ornament = document.createElement('div');
+                ornament.className = 'ornament';
+                const size = 8 + Math.random() * 8;
+                ornament.style.width = size + 'px';
+                ornament.style.height = size + 'px';
+                ornament.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Posicionamiento más realista
+                let left, top;
+                do {
+                    left = Math.random() * 200 - 100;
+                    top = Math.random() * 350;
+                } while (!isValidPosition(left, top, positions));
+                
+                positions.push({left, top});
+                ornament.style.left = left + 'px';
+                ornament.style.top = top + 'px';
+                tree.appendChild(ornament);
+            }
+        }
+
+        // Agregar luces
+        function addLights() {
+            for (let i = 0; i < 50; i++) {
+                const light = document.createElement('div');
+                light.className = 'light';
+                light.style.backgroundColor = lightColors[Math.floor(Math.random() * lightColors.length)];
+                light.style.left = Math.random() * 200 - 100 + 'px';
+                light.style.top = Math.random() * 350 + 'px';
+                light.style.animationDelay = Math.random() + 's';
+                tree.appendChild(light);
+            }
+        }
+
+        // Verificar si la posición es válida (no muy cerca de otros adornos)
+        function isValidPosition(left, top, positions) {
+            for (const pos of positions) {
+                const distance = Math.sqrt(Math.pow(left - pos.left, 2) + Math.pow(top - pos.top, 2));
+                if (distance < 20) return false;
+            }
+            return true;
+        }
+
+        // Crear efecto de nieve
+        function createSnowflake() {
+            const snow = document.createElement('div');
+            snow.className = 'snow';
+            snow.style.left = Math.random() * window.innerWidth + 'px';
+            snow.style.opacity = Math.random();
+            
+            let position = -10;
+            function fall() {
+                position += 1;
+                snow.style.top = position + 'px';
+                
+                if (position > window.innerHeight) {
+                    snow.remove();
+                } else {
+                    requestAnimationFrame(fall);
+                }
+            }
+            
+            document.body.appendChild(snow);
+            fall();
+        }
+
+        // Inicializar
+        addBranches();
+        addLights();
+        addOrnaments();
+        setInterval(createSnowflake, 100);
+    </script>
+</body>
+</html>
